@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 80
 
 
 spring:
@@ -11,3 +11,11 @@ spring:
     url: jdbc:mysql://localhost:3366/test?useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
+
+eureka:
+  client:
+    register-with-eureka: true   #将自己注册到eureka
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka  #eureka服务地址
+      #defaultZone: http://eureka7001.com:7001/eureka/

@@ -67,6 +67,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--eureka client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>com.atguigu.springcloud</groupId>
