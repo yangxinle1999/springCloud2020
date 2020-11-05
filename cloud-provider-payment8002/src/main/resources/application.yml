@@ -1,9 +1,9 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-payment-service #与8001的服务名相同
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
@@ -23,5 +23,5 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #eureka服务地址
       #defaultZone: http://eureka7001.com:7001/eureka/
   instance:
-    instance-id: payment8001 #在eureka中显示的名字，防止出现与本机有关的信息
+    instance-id: payment8002 #在eureka中显示的名字，防止出现与本机有关的信息
     prefer-ip-address: true #点击访问路径可以显示ip地址

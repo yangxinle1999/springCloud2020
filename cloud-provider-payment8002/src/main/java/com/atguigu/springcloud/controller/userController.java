@@ -6,13 +6,10 @@ import com.atguigu.springcloud.service.userService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
@@ -23,9 +20,6 @@ public class userController {
 
     @Value("${server.port}")
     private String port;
-
-    @Resource
-    private DiscoveryClient discoveryClient;
 
     @GetMapping("/user/create")
     public CommonResult create(@RequestBody user user){
@@ -47,20 +41,5 @@ public class userController {
         }else {
             return new CommonResult(444,"查询数据失败",null);
         }
-    }
-
-
-    //服务发现
-    @GetMapping("/payment/discovery")
-    public Object discovery(){
-        List<String> services = discoveryClient.getServices();//获取所有的服务接口名
-        for (String service : services){
-            System.out.println("element"+service);
-        }
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        for (ServiceInstance serviceInstance : instances){  //获取每个服务接口下面的实例信息
-            System.out.println(serviceInstance.getHost()+"/"+serviceInstance.getPort());
-        }
-        return this.discoveryClient;
     }
 }

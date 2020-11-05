@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderController {
 
-    private static final String path = "http://localhost:8001";
+    private static final String path = "http://CLOUD-PAYMENT-SERVICE";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -23,7 +23,7 @@ public class OrderController {
 
     @GetMapping("/consumer/getUserById/{id}")
     public CommonResult getUserById(@PathVariable("id") int id){
-        return restTemplate.getForObject(path+"user/getUserById/"+id,CommonResult.class);
+        return restTemplate.getForObject(path+"/user/getUserById/"+id,CommonResult.class);
 
     }
 
